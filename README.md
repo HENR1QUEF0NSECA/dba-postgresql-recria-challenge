@@ -183,12 +183,14 @@ ON events (date_trunc('day', created_at) DESC);
 
 ## ⚠️ O Que Ficou de Fora
 
-| Item | Motivo |
-|------|--------|
-| `05_particionamento.sql` | Arquivo presente porém sem implementação final — migrar uma tabela existente com 1M de linhas para particionamento requer estratégia de zero-downtime (swap de tabelas, triggers ou `pg_partman`) que não foi concluída no prazo |
-| `07_monitoramento.sql` | Arquivo presente porém sem implementação final — o conjunto de views de monitoramento (`pg_stat_user_tables`, `pg_stat_statements`, bloat queries) ficou planejado mas não foi entregue |
-| Connection Pooling | PgBouncer não foi configurado; seria o próximo passo para ambientes com alta concorrência |
-| Alertas automatizados | Não há integração com Prometheus/Grafana ou qualquer sistema de alertas |
+Os itens abaixo são **bônus não obrigatórios** e não foram implementados nesta entrega devido a questões de tempo:
+
+| Item | Descrição |
+|------|-----------|
+| `pg_cron` | Agendamento de jobs de manutenção (ex.: refresh de materialized view ou drop de partição antiga) |
+| `pgvector` | Adição de coluna de embedding com busca por similaridade usando índice HNSW ou IVFFlat |
+| `PL/pgSQL` | Função de manutenção para criação automática de partições futuras |
+| Row Level Security | Implementação de política de RLS simples para controle de acesso por linha |
 
 ---
 
